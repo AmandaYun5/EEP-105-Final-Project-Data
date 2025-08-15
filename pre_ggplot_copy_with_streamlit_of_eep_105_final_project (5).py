@@ -837,16 +837,7 @@ st.write(
 statistical_analysis = '''mean_x = np.mean(list(df_sk_co2_temp_wide_std ["Emissions"]))
 mean_y = np.mean(list(df_sk_co2_temp_wide_std ["Temperature"]))
 sd_x = np.std(list(df_sk_co2_temp_wide_std ["Emissions"]))
-sd_y = np.std(list(df_sk_co2_temp_wide_std ["Temperature"]))
-
-print("Emissions mean: ",
-      mean_x,
-      "Temperature mean: ",
-      mean_y,
-      "Emissions standard deviation: ",
-      sd_x,
-      "Temperature standard deviation: ",
-      sd_y)'''
+sd_y = np.std(list(df_sk_co2_temp_wide_std ["Temperature"]))'''
 st.code(statistical_analysis)
 # original ver
 
