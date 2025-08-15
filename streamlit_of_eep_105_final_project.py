@@ -18,6 +18,11 @@ from lets_plot import *
 LetsPlot.setup_html()
 import streamlit as st
 
+streamlit run streamlit_of_eep_105_final_project.py
+st.title("My first dashboard")
+st.write("Hello World!")
+
+
 """# Motivation
 
 **1) Why did you pick this country?**
@@ -664,7 +669,5 @@ scaled_plot
 #Summary plot
 gggrid(plots = [co2_plot, tile_plot, facet_co2_temp_plot, scaled_plot], ncol = 2, widths = [5,5])
 
-st.title("My first dashboard")
-st.write("Hello World!")
-streamlit run app.py
+
 
