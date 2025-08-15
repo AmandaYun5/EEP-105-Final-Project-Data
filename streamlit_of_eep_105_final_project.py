@@ -442,7 +442,7 @@ co2_plot = (ggplot(data = df_co2_plot_agg,
                 caption = "Limited to reporting Countries")+
             ggsize(600, 400)
                )
-co2_plot
+st_letsplot(co2_plot)
 
 #Plot CO2 emissions by country
 df_co2_plot_country = Final_df.query("Indicator == 'Emissions'")
@@ -456,13 +456,13 @@ co2_plot_by_country = (ggplot(data = df_co2_plot_country,
                 y="Emissions (Metric Tonnes)",
                 caption = "Limited to Reporting Countries")
                       )
-co2_plot_by_country
+st_letsplot(co2_plot_by_country)
 
 #Add another layer to highlight the SK line in blue
 df_co2_plot_us = df_co2_plot_country.query("Country =='South Korea'")
 co2_plot_by_country = co2_plot_by_country + geom_line(
                            data=df_co2_plot_us, mapping = aes(x="Year", y="Value", color = "Country")) + scale_color_manual(values = ["blue"])
-co2_plot_by_country
+st_letsplot(co2_plot_by_country)
 
 n = df_co2_plot_country.query("Country == 'Germany'")
 n.query("Year == 1862")
@@ -508,7 +508,7 @@ top10_plot = (ggplot(data = df_top10, mapping =aes(x="Year", y="Value", color = 
                   nudge_unit = 'size'
               )
                    )
-top10_plot
+st_letsplot(top10_plot)
 
 #Turn the ascending countries list into a category list to sort the dataframe
 #This is great for columns that have a certain number (10 in this case) of unique values
@@ -533,7 +533,7 @@ tile_plot = (ggplot(data = df_top10_asc_sort, mapping = aes(x="Year", y = "Count
              labs(title="Top 10 CO2 Emissions-producing Countries (1900-2014)",
                   subtitle = "Ordered by Emissions Produced in 2014")
             )
-tile_plot
+st_letsplot(tile_plot)
 
 # 4) The last facet figure, 3x2 figure that shows all of the world and then just the chosen country.
 
@@ -558,7 +558,7 @@ three_by_two_plot = (ggplot(data=df_3_2, mapping = aes(x="Year", y="Value", grou
                          strip_text = element_text(color = "white", size=16, face ="bold"))
                     )
 
-three_by_two_plot
+st_letsplot(three_by_two_plot)
 
 #Filter df_final to just include US data for emissions and temperature
 
@@ -584,7 +584,7 @@ facet_co2_temp_plot = (ggplot(data=df_sk_co2_temp, mapping = aes(x="Year", y="Va
                        labs(title = "US Emissions and Temperatures (1980-2014)")+
                        ggsize(600, 400)
                       )
-facet_co2_temp_plot
+st_letsplot(facet_co2_temp_plot)
 
 """# Data Analysis"""
 
@@ -659,10 +659,11 @@ scaled_plot = (ggplot(data = df_sk_co2_temp_wide_std, mapping = aes(x="Emissions
                ggsize(600, 400)
                        )
 
-scaled_plot
+st_letsplot(scaled_plot)
 
 #Summary plot
-gggrid(plots = [co2_plot, tile_plot, facet_co2_temp_plot, scaled_plot], ncol = 2, widths = [5,5])
+summary_plot = gggrid(plots = [co2_plot, tile_plot, facet_co2_temp_plot, scaled_plot], ncol = 2, widths = [5,5])
+st_letsplot(summary_plot)
 
 
 
