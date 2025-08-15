@@ -769,7 +769,7 @@ def std_units(array):
     return (array - np.mean(array))/np.std(array)
 
 test = '''def std_units(array): 
-return (array - np.mean(array))/np.std(array)'''
+   return (array - np.mean(array))/np.std(array)'''
 st.code(test)
 
 #Convert dataframe back to narrow version 
