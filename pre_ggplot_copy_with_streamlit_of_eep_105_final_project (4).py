@@ -767,6 +767,8 @@ Where y refers to temperature statistics
 #Define a function for converting to standard units
 def std_units(array):
     return (array - np.mean(array))/np.std(array)
+test = 'def std_units(array): return (array - np.mean(array))/np.std(array)')
+st.code(test)
 
 #Convert dataframe back to narrow version 
 df_sk_co2_temp_wide = df_sk_co2_temp.pivot(columns = "Indicator", values = "Value", index = "Year") 
