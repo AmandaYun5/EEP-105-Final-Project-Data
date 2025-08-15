@@ -682,6 +682,8 @@ for i, indicator in enumerate(indicators):
         # Plot the data on the current axes
         # Loop through countries to plot each line separately
         for country, country_data in plot_data_subset.groupby('Country'):
+            # Sort data by year before plotting
+            country_data = country_data.sort_values(by='Year')
             ax.plot(country_data['Year'], country_data['Value'], color='black', linewidth=0.5)
 
         # Set up titles and labels as needed
@@ -689,12 +691,13 @@ for i, indicator in enumerate(indicators):
             ax.set_title(region, fontsize=14)
 
         if j == 0:  # Leftmost column of subplots
-            ax.set_ylabel('Indicator Value')
+            ax.set_ylabel(indicator)
 
         # You can add more customization here, like axis limits or tick formatting
 
 # Adjust layout to prevent labels from overlapping
 plt.tight_layout(rect=[0, 0.03, 1, 0.9])
+plt.show()
 st.pyplot(fig)
 
 #Filter df_final to just include US data for emissions and temperature
