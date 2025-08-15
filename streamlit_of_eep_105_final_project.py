@@ -10,10 +10,6 @@ Original file is located at
 #Import packages
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-from scipy import stats
 from lets_plot import *
 LetsPlot.setup_html()
 import streamlit as st
