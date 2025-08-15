@@ -114,8 +114,6 @@ If in 2007 the flood count is 3, it means three flood events were recorded in So
 **5. South Korea Temperature Data (1901-2022):**
 A temperature of 13.2°C in 2010 means the average temperature across all months of 2010 was 13.2°C. Rising averages over decades can indicate warming trends.
 
-# Data Import
-Below, we'll read in the data with the appropriate function (depending upon whether they're in Excel or CSV format), assign them a dataframe name, and print out a few of the rows to see what the dataframes look like.
 """
 
 #Read in the data
@@ -127,11 +125,6 @@ df_en = pd.read_csv("https://raw.githubusercontent.com/AmandaYun5/EEP-105-Final-
 df_nd = pd.read_csv("https://raw.githubusercontent.com/AmandaYun5/EEP-105-Final-Project-Data/refs/heads/main/sk_natural_disaster_data.csv")
 df_temp = pd.read_csv("https://raw.githubusercontent.com/AmandaYun5/EEP-105-Final-Project-Data/refs/heads/main/sk_temp_data.csv")
 
-"""# Data Wrangling"""
-
-#use .melt() to change data from wide to long, this makes the data a little more tidy
-# changes the year columns into a single column called year with its corresponding values
-# grabbing a random sample from the CO2 emissions data
 
 CO2_emissions_long = pd.melt(
     df_co2,
