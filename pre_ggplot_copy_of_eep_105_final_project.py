@@ -870,16 +870,3 @@ plt.ylabel("Temperature (Celsius)")
 plt.savefig('my_plot3.png', dpi=300, bbox_inches='tight')
 st.pyplot(fig)
 
-#Scaled emissions and temperature plot
-
-scaled_plot = (ggplot(data = df_sk_co2_temp_wide_std, mapping = aes(x="Emissions", y="Temperature"))+
-                        geom_point()+
-                        geom_smooth(method = "lm", se=False, color = "blue")+
-                 scale_x_continuous()+
-               labs(title= "South Korea CO2 Emissions and Temperature (1980-2014)",
-                    x="Scaled Emissions (Metric Tonnes)",
-                    y= "Scaled Temperature (Fahrenheit)")+
-               ggsize(600, 400)
-                       )
-
-scaled_plot
