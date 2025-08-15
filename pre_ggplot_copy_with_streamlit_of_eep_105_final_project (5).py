@@ -839,7 +839,7 @@ st.write(
 
 # streamlit ver
 
-statistical analysis = '''mean_x = np.mean(list(df_sk_co2_temp_wide_std ["Emissions"]))
+statistical_analysis = '''mean_x = np.mean(list(df_sk_co2_temp_wide_std ["Emissions"]))
 mean_y = np.mean(list(df_sk_co2_temp_wide_std ["Temperature"]))
 sd_x = np.std(list(df_sk_co2_temp_wide_std ["Emissions"]))
 sd_y = np.std(list(df_sk_co2_temp_wide_std ["Temperature"]))
@@ -852,7 +852,7 @@ print("Emissions mean: ",
       sd_x,
       "Temperature standard deviation: ",
       sd_y)'''
-st.code(statistical analysis)
+st.code(statistical_analysis)
 # original ver
 
 """correlation coefficient for emissions and temperature of SK
