@@ -768,7 +768,7 @@ Where y refers to temperature statistics
 #Define a function for converting to standard units
 convertion1 = '''def std_units(array):
   return (array - np.mean(array))/np.std(array)'''
-  st.code(convertion1)
+st.code(convertion1)
 
 # Original define a function for converting to standard units
 def std_units(array):
