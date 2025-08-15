@@ -779,9 +779,6 @@ test1 = '''def std_units(array):
 return (array - np.mean(array))/np.std(array)'''
 st.code(test1)
 
-# original Define a function for converting to standard units
- def std_units(array):
-return (array - np.mean(array))/np.std(array)
 
 #Convert dataframe back to narrow version
 narrow1 = '''df_sk_co2_temp_wide = df_sk_co2_temp.pivot(columns = "Indicator", values = "Value", index = "Year")
