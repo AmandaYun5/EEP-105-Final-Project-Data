@@ -819,10 +819,10 @@ Where y refers to temperature statistics
 """
 
 #keep this streamlit cell
-mean_x = np.mean(list(df_sk_co2_temp_wide_std["Emissions"]))
-mean_y = np.mean(list(df_sk_co2_temp_wide_std["Temperature"]))
-sd_x = np.std(list(df_sk_co2_temp_wide_std["Emissions"]))
-sd_y = np.std(list(df_sk_co2_temp_wide_std["Temperature"]))
+mean_x = np.mean(list(df_sk_co2_temp_wide["Emissions"]))
+mean_y = np.mean(list(df_sk_co2_temp_wide["Temperature"]))
+sd_x = np.std(list(df_sk_co2_temp_wide["Emissions"]))
+sd_y = np.std(list(df_sk_co2_temp_wide["Temperature"]))
 
 st.write(
     f"**Emissions mean:** {mean_x:.2f}",
@@ -830,6 +830,7 @@ st.write(
     f"**Emissions standard deviation:** {sd_x:.2f}",
     f"**Temperature standard deviation:** {sd_y:.2f}"
 )
+
 
 # streamlit ver
 
