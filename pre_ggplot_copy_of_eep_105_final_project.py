@@ -396,7 +396,7 @@ Final_df
 data_long_with_miss = data_long.sort_values(by='Country').reset_index(drop=True)
 Final_df = data_long.dropna(subset=['Value']).sort_values(by='Country').reset_index(drop=True)
 print(Final_df)
-Final_df
+Final_df["Value"] = pd.to_numeric(Final_df["Value"], errors = 'coerce')
 
 """# Data Visualization"""
 
