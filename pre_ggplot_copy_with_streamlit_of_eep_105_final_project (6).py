@@ -127,29 +127,7 @@ df_en = pd.read_csv("https://raw.githubusercontent.com/AmandaYun5/EEP-105-Final-
 df_nd = pd.read_csv("https://raw.githubusercontent.com/AmandaYun5/EEP-105-Final-Project-Data/refs/heads/main/sk_natural_disaster_data.csv")
 df_temp = pd.read_csv("https://raw.githubusercontent.com/AmandaYun5/EEP-105-Final-Project-Data/refs/heads/main/sk_temp_data.csv")
 
-#Yearly CO2 emissions by country (1751-2014):
-df_co2.head()
-
-#GDP per capita in terms of yearly percentage growth per capita by country (1801-2019):
-df_gdp.head()
-
-#Energy use per person in terms of kg of oil equivalents per capita by country (1990-2023):
-df_en.head()
-
-#SK data on natural disasters (1977-2025):
-df_nd.head()
-
-#SK data on temperature (1895-2019):
-df_temp.head()
-
 """# Data Wrangling"""
-
-# there are 192 rows of different countries and their CO2 emissoins values from 1751-2014
-#some countries have missing data
-#code below shows the years in our data
-print(df_co2.columns)
-column_names_list = list(df_co2.columns)
-print(column_names_list)
 
 #use .melt() to change data from wide to long, this makes the data a little more tidy
 # changes the year columns into a single column called year with its corresponding values
@@ -162,9 +140,6 @@ CO2_emissions_long = pd.melt(
     value_name='Emissions'
 )
 
-random_sample = CO2_emissions_long.sample(n=6, random_state = 123)
-print (random_sample)
-CO2_emissions_long
 
 # clean and tidy the CO2 data further
 df_co2_c = (
@@ -175,17 +150,7 @@ df_co2_c = (
     .dropna(subset=['Emissions']) # Add this line to drop rows where 'Emissions' is NaN
 )
 
-print(df_co2_c.head())
 
-#Yearly Growth in GDP Per Capita (GDP_PC) Data Wrangling
-# checking number of rows in the GDP_pc data frame
-num_rows = len(df_gdp)
-print(f'Number of rows: {num_rows}')
-# shows 194 rows as opposed to 50688
-
-#checking number of columns:
-num_cols = len(df_gdp.columns)
-print(f'Number of columns: {num_cols}')
 
 # there's 220 country columns and a set of columns corresponding to different years
 # use .melt() to change data from wide to long, this makes the data a little more tidy changes the year columns into a single column called year with its corresponding values
@@ -196,10 +161,6 @@ df_gdp_long = pd.melt(
     value_name='GDP per capita'
 )
 
-# grabbing a random sample from the GDP per capita data
-
-random_sample = df_gdp_long.sample(n=6, random_state = 123)
-print (random_sample)
 
 # clean and tidy the GDP_pc data further
 df_gdp_c = (
@@ -210,7 +171,6 @@ df_gdp_c = (
      .dropna(subset=['GDP per capita']) # Add this line to drop rows where 'GDP' is NaN
 )
 
-print(df_gdp_c.head())
 
 # cleaning the Data for Energy Use per person (E_use_pp)
 
@@ -225,10 +185,6 @@ df_en_long = pd.melt(
     value_name='Energy Use PP'
 )
 
-# grabbing a random sample from the Energy use per person data
-
-random_sample = df_en_long.sample(n=6, random_state = 123)
-print (random_sample)
 
 # clean the E_use_pp data further:
 # Convert Year to an integer
@@ -244,32 +200,16 @@ df_en_c = (
     .rename(columns={'energy_use': 'Energy'})
         .dropna(subset=['Energy Use PP']) # Add this line to drop rows where 'Energy' is NaN
 )
-df_en_c
 
-# setting seed for reproducibility, ensures that the random sample is the same every time you run the code.
 
-np.random.seed(123)
-#  grabbing 3 random rows from the Data frame
-energy_use_sample = df_en_c.sample(n=3).reset_index(drop=True)
-# showing the sample
-print(energy_use_sample)
 
-# checking unique values in Country column, showing different countries, picked first 10 for shorter demonstration
-
-unique_countries = df_en_c['Country'].unique()
-print("\nUnique countries in the dataset (first 10):")
-print(unique_countries[:10])
-
-# showing number of unique countries
-unique_countries = df_en_c['Country'].unique()
-print(f"\nTotal number of unique countries: {len(unique_countries)}")
 
 #Now we're going to look at the SK specific data
 # These data sets only gave us info for the SK
 
 # Disasters Data Wrangling
 # showing the data
-df_nd
+
 
 #Select only "Year" and "Disasters" columns
 df_nd = df_nd.loc[:,["Start Year", "Disaster Type"]]
@@ -285,7 +225,7 @@ df_nd["Label"] = "Number of Disasters"
 #Rename "Disaster" column to "Number of Disasters"
 df_nd = df_nd.rename(columns = {"Start Year": "Year", "Disaster Type":"Value"})
 df_nd_c = df_nd[["Country", "Year", "Indicator", "Value", "Label"]]
-df_nd_c
+
 
 #Pivot temperature data to long form
 df_no_identifiers = df_temp.drop(columns=['code', 'name'])
@@ -300,7 +240,7 @@ df_temp_long["Label"] = "Temperature (Celsius)"
 df_temp_long = df_temp_long.rename(columns = {"year":"Year", "temperature":"Value"})
 df_temp_long["Year"] = df_temp_long["Year"].str[:4].astype("int64")
 df_temp_c = df_temp_long[["Country", "Year", "Indicator", "Value", "Label"]]
-df_temp_c
+
 
 # now we combine data sets
 # merge CO2 Emissions and GDP growth per capita
@@ -320,11 +260,7 @@ data_wide = pd.merge(
     how='outer'
 )
 
-data_wide
 
-#  set random seed for reproducibility
-np.random.seed(123)
-print(data_wide.sample(n=3))
 
 # reorder the columns for aesthetic preferences
 new_column_order = [
@@ -335,12 +271,7 @@ new_column_order = [
     'Energy Use PP',
     'Label'
 ]
-data_wide = data_wide[new_column_order]
-np.random.seed(123)
-print(data_wide.sample(n=3))
 
-#this seems repetitive since I think the columns were already in this order
-data_wide
 
 # make long version of the data and create new variable called Indicator to indicate where the data set came from
 data_long = data_wide.melt(
@@ -349,7 +280,7 @@ data_long = data_wide.melt(
     value_vars=['Emissions', 'GDP per capita', 'Energy Use PP'],
     value_name = "Value"
 )
-data_long
+
 
 #add label column afterward (including label with id_vars was making th elabels and indicator columns misalign for some values)
 label_map = {
@@ -358,7 +289,6 @@ label_map = {
     'Energy Use PP': 'Energy Use (kg, oil-eq./capita)'
 }
 data_long['Label'] = data_long['Indicator'].map(label_map)
-data_long
 
 # combine this with the US Data about Disasters and Temperature
 # concat automatically handles columns that don't match by filling them with NaN just in case
@@ -366,18 +296,12 @@ data_long
 data_long = pd.concat([data_long, df_nd_c, df_temp_c])
 data_long['Country'] = data_long['Country'].astype('category')
 data_long = data_long.dropna()
-print(data_long)
-data_long
 
-# show first and last 6 rows of the combined data set
-print(data_long.head(6))
-print(data_long.tail(6))
 
 # drop rows that have at least 1 NaN value
 data_long_with_miss = data_long.sort_values(by='Country').reset_index(drop=True)
 Final_df = data_long.dropna(subset=['Value']).sort_values(by='Country').reset_index(drop=True)
-print(Final_df)
-Final_df
+
 
 # create a new variable called region that will indicate if Data ifro m the SK or a different country based on the Country variable
 # ex: if country variable is US then new variable's value will the SK, but if the Country variable isn't equal to SK then it will be "Rest of the World"
@@ -388,18 +312,13 @@ data_long['Region'] = np.where(
 )
 Final_df = data_long.sort_values(by='Country')
 
-print(Final_df)
-Final_df
-
 # drop rows that have at least 1 NaN value
 data_long_with_miss = data_long.sort_values(by='Country').reset_index(drop=True)
 Final_df = data_long.dropna(subset=['Value']).sort_values(by='Country').reset_index(drop=True)
-print(Final_df)
 Final_df["Value"] = pd.to_numeric(Final_df["Value"],errors = "coerce")
 
 """# Data Visualization"""
 
-df_co2_c
 
 # 1) The first line plot under the "adding color" subsection.
 # plotting all the countries, having the SK line in blue
@@ -484,8 +403,6 @@ emissions_2014_sorted = emissions_2014.sort_values(by='Emissions', ascending=Fal
 
 top_10_emitters = emissions_2014_sorted.head(10)
 
-print(top_10_emitters)
-top_10_emitters
 
 # 2) The top 10 emitting country line plot with names attached to the lines at the end of the "adding color" subsection.
 # our top 10 countries are Canada, China, Germany, India, Iran, Japan, Russia, Saudi Arabia, South Korea, and the US
