@@ -751,7 +751,7 @@ for ax, title in zip(g.axes.flat, data_long['Label'].unique()):
 plt.subplots_adjust(hspace=0.4)
 g.fig.suptitle("US Emissions and Temperatures (1980-2014)", y=1.02)
 
-st.pyplot(fig)
+st.pyplot(g)
 
 # make the last scatterplot in the scatterplot section
 #rename the 'Value' column in both dataframes to reflect the data they hold
