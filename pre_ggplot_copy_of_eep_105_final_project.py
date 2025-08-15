@@ -14,10 +14,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from scipy import stats
-!pip install lets_plot
-from lets_plot import *
-LetsPlot.setup_html()
-!pip install streamlit
 import streamlit as st
 
 """# Motivation
