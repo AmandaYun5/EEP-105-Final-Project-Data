@@ -764,7 +764,15 @@ Mean and sd for emissions and temperature of SK in standard units
 Where x refers to emissions statistics
 Where y refers to temperature statistics
 """
+#Convert dataframe back to narrow version 
+df_sk_co2_temp_wide = df_sk_co2_temp.pivot(columns = "Indicator", values = "Value", index = "Year") 
+df_sk_co2_temp_wide.head()
 
+#Standardize 
+df_sk_co2_temp_wide_std = df_sk_co2_temp_wide.apply(std_units) 
+df_sk_co2_temp_wide_std["Emissions"] = pd.to_numeric(df_sk_co2_temp_wide_std["Emissions"].copy(), errors = "coerce") 
+df_sk_co2_temp_wide_std["Temperature"] = pd.to_numeric(df_sk_co2_temp_wide_std["Temperature"].copy(), errors = "coerce") 
+df_sk_co2_temp_wide_std.head()
 
 mean_x_su = np.mean(list(df_sk_co2_temp_wide_std["Emissions"]))
 mean_y_su = np.mean(list(df_sk_co2_temp_wide_std["Temperature"]))
