@@ -3,3 +3,4 @@ seaborn
 statsmodels
 scipy
 streamlit
+matplotlib.image
