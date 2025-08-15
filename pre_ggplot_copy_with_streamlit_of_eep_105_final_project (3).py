@@ -770,7 +770,7 @@ g.set(xticks=range(1980, 2015, 5))
 g.set_xticklabels(range(1980, 2015, 5), rotation=30)
 g.set_axis_labels("Year", "")
 
-for ax, title in zip(g.axes.flat, data_long['Label'].unique()):
+for ax, title in zip(g.axes.flat, df_sk_co2_temp_long['Label'].unique()):
     ax.set_title(title, fontsize=12, y = 1.05, bbox=dict(edgecolor='black', facecolor = 'white', boxstyle='square, pad=0.3'))
 
 
