@@ -853,8 +853,8 @@ sns.regplot(
 )
 
 plt.title("South Korea Emissions and Temperature (1980-2014)", fontsize=16)
-plt.xlabel("Emissions (Metric Tonnes)")
-plt.ylabel("Temperature (Celsius)")
+plt.xlabel("Scaled Emissions (Metric Tonnes)")
+plt.ylabel("Scaled Temperature (Celsius)")
 plt.show()
 st.pyplot(fig)
 
