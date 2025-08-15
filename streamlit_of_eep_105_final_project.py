@@ -13,6 +13,7 @@ import numpy as np
 from lets_plot import *
 LetsPlot.setup_html()
 import streamlit as st
+from streamlit_letsplot import st_letsplot
 
 st.title("My first dashboard")
 st.write("Hello World!")
