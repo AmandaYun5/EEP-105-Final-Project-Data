@@ -756,7 +756,7 @@ g.fig.suptitle("US Emissions and Temperatures (1980-2014)", y=1.02)
 # saving plot as a png file
 plt.savefig('my_plot2.png', dpi=300, bbox_inches='tight')
 
-st.plyplot(fig)
+st.pyplot(fig)
 
 # make the last scatterplot in the scatterplot section
 #rename the 'Value' column in both dataframes to reflect the data they hold
@@ -790,7 +790,7 @@ plt.ylabel("Temperature (Fahrenheit)")
 # saving plot as a png file
 plt.savefig('my_plot3.png', dpi=300, bbox_inches='tight')
 
-st.plyplot(fig)
+st.pyplot(fig)
 
 """# Data Analysis"""
 
@@ -868,7 +868,7 @@ plt.xlabel("Emissions (Metric Tonnes)")
 plt.ylabel("Temperature (Celsius)")
 # saving plot as a png file
 plt.savefig('my_plot3.png', dpi=300, bbox_inches='tight')
-st.plyplot(fig)
+st.pyplot(fig)
 
 #Scaled emissions and temperature plot
 
