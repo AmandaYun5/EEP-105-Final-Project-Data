@@ -423,6 +423,6 @@ ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
 
-plt.show()
+st.pyplot(fig)
 
 plt.savefig('my_plot.png', dpi=300, bbox_inches='tight')
