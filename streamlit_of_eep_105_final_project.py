@@ -18,7 +18,6 @@ from lets_plot import *
 LetsPlot.setup_html()
 import streamlit as st
 
-streamlit run streamlit_of_eep_105_final_project.py
 st.title("My first dashboard")
 st.write("Hello World!")
 
