@@ -627,7 +627,6 @@ df_sk_co2_temp = df_sk_co2_temp[df_sk_co2_temp["Country"].isin(["South Korea"])]
 
 #Filter by time range
 df_sk_co2_temp = df_sk_co2_temp.query("2014 >= Year >= 1980")
-df_sk_co2_temp
 
 #stacked plot edited by amanda
 
