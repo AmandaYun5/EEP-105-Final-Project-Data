@@ -572,7 +572,6 @@ df_3_2= df_3_2.copy()
 #Make values in "Value" column numeric
 df_3_2["Value"] = pd.to_numeric(df_3_2["Value"], errors = "coerce")
 df_3_2["Year"] = pd.to_numeric(df_3_2["Year"], errors = "coerce")
-df_3_2
 
 # --- 1. Prepare Plotting Data ---
 # Create ordered lists for your rows (Indicators) and columns (Regions)
