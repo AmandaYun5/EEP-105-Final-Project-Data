@@ -1,4 +1,9 @@
 matplotlib
+pyplot
 plotly
 seaborn
+sns
 scipy
+stats
+streamlit
+st
