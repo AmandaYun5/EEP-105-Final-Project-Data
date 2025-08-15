@@ -769,7 +769,7 @@ wide_US = pd.merge(df_co2_c, df_temp_c, on=['Year', 'Country'])
 
 wide_US = wide_US[['Year', 'Country', 'Emissions', 'Temperature']]
 
-plt.figure(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(8, 6))
 sns.regplot(
     data=wide_US,
     x='Emissions',
@@ -847,7 +847,7 @@ y=list(df_sk_co2_temp_wide_std["Temperature"])
 coeff = stats.pearsonr(x,y)
 print("Correlation coefficient: ", coeff.statistic)
 
-plt.figure(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(8, 6))
 sns.regplot(
     data=df_sk_co2_temp_wide_std,
     x='Emissions',
