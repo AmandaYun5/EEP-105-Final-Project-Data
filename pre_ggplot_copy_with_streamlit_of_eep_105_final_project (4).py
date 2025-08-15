@@ -765,10 +765,6 @@ Where x refers to emissions statistics
 Where y refers to temperature statistics
 """
 
-df_sk_co2_temp_wide_std = pd.DataFrame({
-    "Emissions": [2.5, 3.1, 4.0, 3.5, 2.9],
-    "Temperature": [15.2, 16.5, 17.8, 17.1, 16.0]
-})
 
 mean_x_su = np.mean(list(df_sk_co2_temp_wide_std["Emissions"]))
 mean_y_su = np.mean(list(df_sk_co2_temp_wide_std["Temperature"]))
