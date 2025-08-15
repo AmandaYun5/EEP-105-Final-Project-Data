@@ -698,7 +698,7 @@ for i, indicator in enumerate(indicators):
 
 # Adjust layout to prevent labels from overlapping
 plt.tight_layout(rect=[0, 0.03, 1, 0.9])
-st.pylot(fig)
+st.pyplot(fig)
 
 #Filter df_final to just include US data for emissions and temperature
 
