@@ -331,7 +331,7 @@ df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
 df_co2_c.dropna(inplace=True)
 
 # Create a selectbox for the user to choose a country to highlight
-selected_country = st.selectbox('Select a country to highlight:', df_co2_c["Country"].unique())
+selected_country = st.selectbox('Select a country to highlight:', ["South Korea", "United States"])
 
 # Define the highlight and default colors
 highlight_color = 'orange'
