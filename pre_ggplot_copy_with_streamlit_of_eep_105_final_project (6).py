@@ -327,7 +327,7 @@ def click_button():
 
 st.button('Highlight South Korea', on_click=click_button)
 
-if st.session_state.clicked = True:
+if st.session_state.clicked == True:
   for country in all_countries:
     country_data = df_co2_c[df_co2_c['Country'] == country]
     if country == "South Korea":
