@@ -326,8 +326,8 @@ df_co2_c.dropna(inplace=True)
 
 all_countries = df_co2_c['Country'].unique()
 
-highlight color = 'blue'
-default color = 'black'
+highlight_color = 'blue'
+default_color = 'black'
 
 #conditional for color
 color_condition = alt.condition(
