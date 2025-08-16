@@ -326,15 +326,25 @@ df_co2_c.dropna(inplace=True)
 
 all_countries = df_co2_c['Country'].unique()
 
+highlight color = 'blue'
+default color = 'black'
+
+#conditional for color
+color_condition = alt.condition(
+    alt.datum.country == selected_country,
+    alt.value(highlight_color),
+    alt.value(default_color)
+)
 
 base_chart = alt.Chart(df_co2_c).encode(
     x="Year",
     y="Emissions",
-	color = "Country"
-).mark_line(color ="black")
+    color = color_condition
+).mark_line()
+
 
 # Create a checkbox for the user to select a country
-selected_country = st.selectbox('Select a country to highlight:', ["South Korea", "United States"])
+selected_country = st.selectbox('Select a country to highlight:', list("South Korea", "United States"))
 
 # Create a filtered dataframe for the selected country
 highlight_data = df_co2_c[df_co2_c['Country'] == selected_country]
@@ -343,7 +353,7 @@ highlight_data = df_co2_c[df_co2_c['Country'] == selected_country]
 highlight_line = alt.Chart(highlight_data).mark_line(strokeWidth=3).encode(
     x='Year',
     y='Emissions',
-    color=alt.Color('Country', legend=None), # Remove the legend for the highlighted line
+    color=highlight_color
     tooltip=['Year', 'Emissions', 'Country']
 )
 
