@@ -346,7 +346,7 @@ ax.spines['right'].set_visible(False)
 ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
 
 plt.show()
-st.pyplot()
+st.pyplot(fig)
 
 
 # determining top 10 countries with most emissions, these countries are the most relevant to us as they contribute the most
