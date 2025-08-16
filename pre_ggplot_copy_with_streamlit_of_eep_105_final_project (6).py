@@ -331,7 +331,7 @@ default_color = 'black'
 
 
 # Create a checkbox for the user to select a country
-selected_country = st.selectbox('Select a country to highlight:', list("South Korea", "United States"))
+selected_country = st.selectbox('Select a country to highlight:', ["South Korea", "United States"])
 
 #conditional for color
 color_condition = alt.condition(
