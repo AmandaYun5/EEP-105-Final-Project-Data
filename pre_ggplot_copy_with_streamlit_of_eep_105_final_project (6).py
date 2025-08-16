@@ -312,45 +312,35 @@ Final_df["Value"] = pd.to_numeric(Final_df["Value"],errors = "coerce")
 
 """# Data Visualization"""
 
-df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
-df_co2_c.dropna(inplace=True)
-
-all_countries = df_co2_c['Country'].unique()
-
-fig, ax = plt.subplots(figsize=(12, 8))
-
 if 'clicked' not in st.session_state:
     st.session_state.clicked = False
 
 def click_button():
     st.session_state.clicked = True
 
-st.button('Highlight South Korea', on_click=click_button)
+st.button('Highlight South Korea', on_click=click_button, key='south_korea_button')
 
-if st.session_state.clicked == True:
-  for country in all_countries:
-    country_data = df_co2_c[df_co2_c['Country'] == country]
-    if country == "South Korea":
-      ax.plot(country_data['Year'], country_data['Emissions'], color='black', linewidth=3, alpha=0.3, zorder=1)
-    else:
-      ax.plot(country_data['Year'], country_data['Emissions'], color='black', linewidth=1.5, alpha=0.3, zorder=1)
-else:
-  for country in all_countries:
-     ax.plot(country_data['Year'], country_data['Emissions'], color='black', linewidth=1.5, alpha=0.3, zorder=1)
+if st.session_state.clicked:
+    df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
+    df_co2_c.dropna(inplace=True)
+    all_countries = df_co2_c['Country'].unique()
+    fig, ax = plt.subplots(figsize=(12, 8))
+    for country in all_countries:
+      country_data = df_co2_c[df_co2_c['Country'] == country]
+      if country == "South Korea":
+        ax.plot(country_data['Year'], country_data['Emissions'], color='blue', linewidth=3, alpha=0.3, zorder=1)
+      else:
+        ax.plot(country_data['Year'], country_data['Emissions'], color='black', linewidth=1.5, alpha=0.3, zorder=1)
+    ax.set_title('Country CO2 Emissions per Year (1751-2014)', fontsize=16)
+    ax.set_xlabel('Year\n Limited to reporting countries', fontsize=12)
+    ax.set_ylabel('Emissions (Metric Tonnes)', fontsize=12)
 
-ax.set_title('Country CO2 Emissions per Year (1751-2014)', fontsize=16)
-ax.set_xlabel('Year\n Limited to reporting countries', fontsize=12)
-ax.set_ylabel('Emissions (Metric Tonnes)', fontsize=12)
-
-ax.set_facecolor('#F0F0F0')
-ax.grid(color='white', linestyle='-', linewidth=1)
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
-
-plt.show()
-
-st.pyplot(fig)
+    ax.set_facecolor('#F0F0F0')
+    ax.grid(color='white', linestyle='-', linewidth=1)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
+    st.pyplot(fig)
 
 # 1) The first line plot under the "adding color" subsection.
 # plotting all the countries, having the SK line in blue
@@ -367,62 +357,7 @@ if 'clicked' not in st.session_state:
 def click_button():
     st.session_state.clicked = True
 
-st.button('Highlight South Korea', on_click=click_button)
-
-if st.session_state.clicked:
-    df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
-    df_co2_c.dropna(inplace=True)
-    all_countries = df_co2_c['Country'].unique()
-    fig, ax = plt.subplots(figsize=(12, 8))
-    for country in all_countries:
-      country_data = df_co2_c[df_co2_c['Country'] == country]
-      if country == "South Korea":
-        ax.plot(country_data['Year'], country_data['Emissions'], color='blue', linewidth=3, alpha=0.3, zorder=1)
-      else:
-        ax.plot(country_data['Year'], country_data['Emissions'], color='black', linewidth=1.5, alpha=0.3, zorder=1)
-    ax.set_title('Country CO2 Emissions per Year (1751-2014)', fontsize=16)
-    ax.set_xlabel('Year\n Limited to reporting countries', fontsize=12)
-    ax.set_ylabel('Emissions (Metric Tonnes)', fontsize=12)
-    
-    ax.set_facecolor('#F0F0F0')
-    ax.grid(color='white', linestyle='-', linewidth=1)
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
-    st.pyplot(fig)
-
-if 'clicked' not in st.session_state:
-    st.session_state.clicked = False
-
-def click_button():
-    st.session_state.clicked = True
-
-st.button('Highlight United States', on_click=click_button)
-
-if st.session_state.clicked:
-    df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
-    df_co2_c.dropna(inplace=True)
-    all_countries = df_co2_c['Country'].unique()
-    fig, ax = plt.subplots(figsize=(12, 8))
-    for country in all_countries:
-      country_data = df_co2_c[df_co2_c['Country'] == country]
-      if country == "United States":
-        ax.plot(country_data['Year'], country_data['Emissions'], color='red', linewidth=3, alpha=0.3, zorder=1)
-      else:
-        ax.plot(country_data['Year'], country_data['Emissions'], color='black', linewidth=1.5, alpha=0.3, zorder=1)
-    ax.set_title('Country CO2 Emissions per Year (1751-2014)', fontsize=16)
-    ax.set_xlabel('Year\n Limited to reporting countries', fontsize=12)
-    ax.set_ylabel('Emissions (Metric Tonnes)', fontsize=12)
-    
-    ax.set_facecolor('#F0F0F0')
-    ax.grid(color='white', linestyle='-', linewidth=1)
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
-    st.pyplot(fig)
-
-
-
+st.button('Highlight United States', on_click=click_button, key='united_states_button')
 
 
 # determining top 10 countries with most emissions, these countries are the most relevant to us as they contribute the most
