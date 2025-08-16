@@ -322,6 +322,17 @@ Final_df["Value"] = pd.to_numeric(Final_df["Value"],errors = "coerce")
 # customizing plot
 
 
+if 'clicked' not in st.session_state:
+    st.session_state.clicked = False
+
+def click_button():
+    st.session_state.clicked = True
+
+st.button('Highlight South Korea', on_click=click_button)
+
+if st.session_state.clicked:
+    # The message and nested widget will remain on the page
+
 df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
 df_co2_c.dropna(inplace=True)
 
@@ -331,7 +342,10 @@ fig, ax = plt.subplots(figsize=(12, 8))
 
 for country in all_countries:
     country_data = df_co2_c[df_co2_c['Country'] == country]
-    ax.plot(country_data['Year'], country_data['Emissions'], color='black', linewidth=1.5, alpha=0.3, zorder=1)
+    if country == "South Korea":
+      ax.plot(country_data['Year'], country_data['Emissions'], color='blue', linewidth=3, alpha=0.3, zorder=1)
+    else:
+      ax.plot(country_data['Year'], country_data['Emissions'], color='black', linewidth=1.5, alpha=0.3, zorder=1)
 
 ax.set_title('Country CO2 Emissions per Year (1751-2014)', fontsize=16)
 ax.set_xlabel('Year\n Limited to reporting countries', fontsize=12)
