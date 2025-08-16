@@ -331,8 +331,28 @@ base_chart = alt.Chart(df_co2_c).encode(
     x="Year",
     y="Emissions",
     color = "Country"
-).mark_line()
-st.altair_chart(base_chart)
+).mark_line(color = "black")
+
+# Create a checkbox for the user to select a country
+selected_country = st.selectbox('Select a country to highlight:', list("South Korea", "United States"))
+
+# Create a filtered dataframe for the selected country
+highlight_data = df_co2_c[df_co2_c['Country'] == selected_country]
+
+# Create a separate line for the highlighted country, with a thicker stroke
+highlight_line = alt.Chart(highlight_data).mark_line(strokeWidth=3).encode(
+    x='Year',
+    y='Emissions',
+    color=alt.Color('Country', legend=None), # Remove the legend for the highlighted line
+    tooltip=['Year', 'Emissions', 'Country']
+)
+
+# Combine the base chart and the highlight chart
+final_chart = base_chart + highlight_line
+
+# Display the final chart in Streamlit
+st.altair_chart(final_chart, use_container_width=True)
+
 
 df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
 df_co2_c.dropna(inplace=True)
