@@ -14,6 +14,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy import stats
 import streamlit as st
+import altair as alt
 
 """# Motivation
 
@@ -320,6 +321,17 @@ Final_df["Value"] = pd.to_numeric(Final_df["Value"],errors = "coerce")
 # loop through each country and plot its emissions data, change the US line to blue
 # customizing plot
 
+df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
+df_co2_c.dropna(inplace=True)
+
+all_countries = df_co2_c['Country'].unique()
+
+
+base_chart = alt.Chart(df_co2_c).encode(
+    x="Year",
+    y="Emissions",
+    color = "Country"
+)
 
 df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
 df_co2_c.dropna(inplace=True)
