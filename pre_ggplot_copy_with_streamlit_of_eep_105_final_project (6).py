@@ -321,48 +321,43 @@ Final_df["Value"] = pd.to_numeric(Final_df["Value"],errors = "coerce")
 # loop through each country and plot its emissions data, change the US line to blue
 # customizing plot
 
+import streamlit as st
+import altair as alt
+import pandas as pd
+
+# Assume df_co2_c is already loaded as a pandas DataFrame
+# ... (your data loading and preprocessing code) ...
 df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
 df_co2_c.dropna(inplace=True)
 
-all_countries = df_co2_c['Country'].unique()
-
-highlight_color = 'blue'
-default_color = 'black'
-
-
-# Create a checkbox for the user to select a country
+# Create a selectbox for the user to choose a country to highlight
 selected_country = st.selectbox('Select a country to highlight:', ["South Korea", "United States"])
 
-#conditional for color
-color_condition = alt.condition(
-    alt.datum.country == selected_country,
-    alt.value(highlight_color),
-    alt.value(default_color)
+# Define the highlight and default colors
+highlight_color = 'orange'
+default_color = 'lightgray'
+
+# Create a single chart with conditional encoding
+chart = alt.Chart(df_co2_c).mark_line().encode(
+    x=alt.X('Year:T', title='Year'),  # :T specifies temporal data
+    y=alt.Y('Emissions:Q', title='Emissions'), # :Q specifies quantitative data
+    color=alt.condition(
+        alt.datum.Country == selected_country,
+        alt.value(highlight_color),
+        alt.value(default_color)
+    ),
+    strokeWidth=alt.condition(
+        alt.datum.Country == selected_country,
+        alt.value(3),  # Thicker line for selected country
+        alt.value(1)   # Thinner line for others
+    ),
+    tooltip=['Country', 'Year', 'Emissions']
+).properties(
+    title=f"Emissions Over Time with {selected_country} Highlighted"
 )
-
-base_chart = alt.Chart(df_co2_c).encode(
-    x="Year",
-    y="Emissions",
-    color = color_condition
-).mark_line()
-
-
-# Create a filtered dataframe for the selected country
-highlight_data = df_co2_c[df_co2_c['Country'] == selected_country]
-
-# Create a separate line for the highlighted country, with a thicker stroke
-highlight_line = alt.Chart(highlight_data).mark_line(strokeWidth=3).encode(
-    x='Year',
-    y='Emissions',
-    color=highlight_color,
-    tooltip=['Year', 'Emissions', 'Country']
-)
-
-# Combine the base chart and the highlight chart
-final_chart = base_chart + highlight_line
 
 # Display the final chart in Streamlit
-st.altair_chart(final_chart, use_container_width=True)
+st.altair_chart(chart, use_container_width=True)
 
 
 df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
