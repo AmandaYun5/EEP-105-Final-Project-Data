@@ -329,6 +329,10 @@ all_countries = df_co2_c['Country'].unique()
 highlight_color = 'blue'
 default_color = 'black'
 
+
+# Create a checkbox for the user to select a country
+selected_country = st.selectbox('Select a country to highlight:', list("South Korea", "United States"))
+
 #conditional for color
 color_condition = alt.condition(
     alt.datum.country == selected_country,
@@ -342,9 +346,6 @@ base_chart = alt.Chart(df_co2_c).encode(
     color = color_condition
 ).mark_line()
 
-
-# Create a checkbox for the user to select a country
-selected_country = st.selectbox('Select a country to highlight:', list("South Korea", "United States"))
 
 # Create a filtered dataframe for the selected country
 highlight_data = df_co2_c[df_co2_c['Country'] == selected_country]
