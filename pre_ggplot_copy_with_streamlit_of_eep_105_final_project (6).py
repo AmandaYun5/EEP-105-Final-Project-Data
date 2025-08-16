@@ -330,7 +330,7 @@ all_countries = df_co2_c['Country'].unique()
 base_chart = alt.Chart(df_co2_c).encode(
     x="Year",
     y="Emissions"
-).mark_line(color = "black")
+).mark_line()
 
 # Create a checkbox for the user to select a country
 selected_country = st.selectbox('Select a country to highlight:', ["South Korea", "United States"])
