@@ -1,4 +1,5 @@
 matplotlib
+altair
 seaborn
 statsmodels
 scipy
