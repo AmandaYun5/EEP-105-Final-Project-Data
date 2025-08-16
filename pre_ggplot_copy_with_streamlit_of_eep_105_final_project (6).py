@@ -332,6 +332,7 @@ base_chart = alt.Chart(df_co2_c).encode(
     y="Emissions",
     color = "Country"
 ).mark_line()
+st.altair_chart(base_chart)
 
 df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
 df_co2_c.dropna(inplace=True)
