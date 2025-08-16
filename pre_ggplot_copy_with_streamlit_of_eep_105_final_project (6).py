@@ -320,44 +320,36 @@ Final_df["Value"] = pd.to_numeric(Final_df["Value"],errors = "coerce")
 # creating plot
 # loop through each country and plot its emissions data, change the US line to blue
 # customizing plot
-
-import streamlit as st
-import altair as alt
-import pandas as pd
-
-# Assume df_co2_c is already loaded as a pandas DataFrame
-# ... (your data loading and preprocessing code) ...
 df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
 df_co2_c.dropna(inplace=True)
+
+
+st.title("Emissions Over Time")
 
 # Create a selectbox for the user to choose a country to highlight
 selected_country = st.selectbox('Select a country to highlight:', ["South Korea", "United States"])
 
-# Define the highlight and default colors
-highlight_color = 'orange'
-default_color = 'lightgray'
-
-# Create a single chart with conditional encoding
-chart = alt.Chart(df_co2_c).mark_line().encode(
-    x=alt.X('Year:T', title='Year'),  # :T specifies temporal data
-    y=alt.Y('Emissions:Q', title='Emissions'), # :Q specifies quantitative data
-    color=alt.condition(
-        alt.datum.Country == selected_country,
-        alt.value(highlight_color),
-        alt.value(default_color)
-    ),
-    strokeWidth=alt.condition(
-        alt.datum.Country == selected_country,
-        alt.value(3),  # Thicker line for selected country
-        alt.value(1)   # Thinner line for others
-    ),
+# Base chart showing all countries as separate lines
+base_chart = alt.Chart(df_co2_c).mark_line().encode(
+    x=alt.X('Year:O'),
+    y=alt.Y('Emissions:Q'),
+    color=alt.Color('Country:N', legend=alt.Legend(title="Country")),
     tooltip=['Country', 'Year', 'Emissions']
-).properties(
-    title=f"Emissions Over Time with {selected_country} Highlighted"
 )
 
+# Highlighted line for the selected country
+highlight_chart = base_chart.mark_line(strokeWidth=4).encode(
+    color=alt.value('orange') # Use a static color for the highlight
+).transform_filter(
+    alt.datum.Country == selected_country
+)
+
+# Combine the two charts
+final_chart = base_chart + highlight_chart
+
 # Display the final chart in Streamlit
-st.altair_chart(chart, use_container_width=True)
+st.altair_chart(final_chart, use_container_width=True)
+
 
 
 df_co2_c['Year'] = df_co2_c['Year'].astype("int64")
