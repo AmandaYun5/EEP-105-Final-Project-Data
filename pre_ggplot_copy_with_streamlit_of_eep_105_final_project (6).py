@@ -334,7 +334,7 @@ base_chart = alt.Chart(df_co2_c).encode(
 ).mark_line(color = "black")
 
 # Create a checkbox for the user to select a country
-selected_country = st.selectbox('Select a country to highlight:', list("South Korea", "United States"))
+selected_country = st.selectbox('Select a country to highlight:', ["South Korea", "United States"])
 
 # Create a filtered dataframe for the selected country
 highlight_data = df_co2_c[df_co2_c['Country'] == selected_country]
