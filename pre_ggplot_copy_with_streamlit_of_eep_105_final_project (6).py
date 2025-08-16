@@ -353,7 +353,7 @@ highlight_data = df_co2_c[df_co2_c['Country'] == selected_country]
 highlight_line = alt.Chart(highlight_data).mark_line(strokeWidth=3).encode(
     x='Year',
     y='Emissions',
-    color=highlight_color
+    color=highlight_color,
     tooltip=['Year', 'Emissions', 'Country']
 )
 
