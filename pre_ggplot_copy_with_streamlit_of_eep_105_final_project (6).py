@@ -684,10 +684,10 @@ df_sk_co2_temp_wide_std["Emissions"] = pd.to_numeric(df_sk_co2_temp_wide_std["Em
 df_sk_co2_temp_wide_std["Temperature"] = pd.to_numeric(df_sk_co2_temp_wide_std["Temperature"].copy(), errors = "coerce")
 df_sk_co2_temp_wide_std.head()
 
-statistical_analysis = '''mean_x = np.mean(list(df_sk_co2_temp_wide_std ["Emissions"]))
-mean_y = np.mean(list(df_sk_co2_temp_wide_std ["Temperature"]))
-sd_x = np.std(list(df_sk_co2_temp_wide_std ["Emissions"]))
-sd_y = np.std(list(df_sk_co2_temp_wide_std ["Temperature"]))'''
+statistical_analysis = '''mean_x = np.mean(list(df_sk_co2_temp_wide ["Emissions"]))
+mean_y = np.mean(list(df_sk_co2_temp_wide ["Temperature"]))
+sd_x = np.std(list(df_sk_co2_temp_wide ["Emissions"]))
+sd_y = np.std(list(df_sk_co2_temp_wide ["Temperature"]))'''
 st.code(statistical_analysis)
 # original ver
 
