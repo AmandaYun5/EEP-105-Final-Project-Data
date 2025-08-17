@@ -681,8 +681,7 @@ print("Correlation coefficient: ", coeff.statistic)
 x=list(df_sk_co2_temp_wide_std["Emissions"])
 y=list(df_sk_co2_temp_wide_std["Temperature"])
 coeff = stats.pearsonr(x,y)
-printed_coeff = print("Correlation coefficient: ", coeff.statistic)
-st.write(f"**Correlation Coefficient:** {printed_coeff}")
+st.write(f"**Correlation Coefficient:** {coeff}")
 # streamlit ver
 
 
