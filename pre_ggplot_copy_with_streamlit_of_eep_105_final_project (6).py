@@ -725,3 +725,28 @@ plt.ylabel("Scaled Temperature (Celsius)")
 plt.show()
 st.pyplot(fig)
 
+#extra plot for natural disasters compared to temperature
+df_temp_nd = Final_df[Final_df["Indicator"].isin(["Disasters", "Temperature"])]
+df_temp_nd = df_temp_nd[["Year", "Indicator", "Value"]]
+df_nd_plot = df_temp_nd[df_temp_nd["Indicator"].isin(["Disasters"])]
+df_nd_plot = df_nd_plot.query("2021 >= Year >= 1977")
+df_temp_plot = df_temp_nd[df_temp_nd["Indicator"].isin(["Temperature"])]
+df_temp_plot = df_temp_plot.query("2021 >= Year >= 1977")
+df_temp_plot = df_temp_plot[~df_temp_plot["Year"].isin([1983, 2009, 2013])]
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+ax.scatter(df_temp_plot["Value"],df_nd_plot["Value"], color='black', zorder=1)
+
+ax.set_title('South Korea Temperature and Natural Disasters', fontsize=16)
+ax.set_ylabel('Total Number of Natural Disasters (Count)', fontsize=12)
+ax.set_xlabel('Temperature (Celsius)', fontsize=12)
+
+ax.set_facecolor('#F0F0F0')
+ax.grid(color='white', linestyle='-', linewidth=1)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
+
+st.pyplot(fig)
+
