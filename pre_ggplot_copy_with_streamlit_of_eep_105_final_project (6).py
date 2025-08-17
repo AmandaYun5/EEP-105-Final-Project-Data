@@ -14,54 +14,68 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy import stats
 import streamlit as st
-import altair as alt
 
 """# Motivation
 
 **1) Why did you pick this country?**
-	Chloe: I picked this country because my dad is from South Korea and I find its story of modernization really interesting. Korea has endured many centuries of hardship and developed a 빨리빨리 (pali pali) culture, a fast paced lifestyle that sees constant evolution and adaptations to new trends or innovations. Their 빨리빨리 way of life has led to a lot of innovation that has also had a large environmental impact. However, I know that Korean people really value sustainability and there are many sustainability initiatives in Korea to try and combat their climate impact. I think that South Korea being one of the top 10 countries in the data set for the yearly CO2 emissions from the Bloomberg case study was interesting. South Korea has a slightly smaller land mass than California, being the smallest country by far in the top 10 and the 8th largest population in the group. I think this data is fascinating because the country is so small with an extremely dense population and I wanted to look into the country further.
+	We picked this country because our dads are from South Korea and have told us about the country’s rapid modernization over the past few decades. South Korea’s 빨리빨리 (pali pali, or “hurry”) culture — a culture that values efficiency and speed — has spurred the country’s industrialization after decades of hardship and war. This 빨리빨리 way of life and the innovation that came with it has led also had a large environmental impact. In fact, we noticed that South Korea was one of the top 10 emitters of CO2 in 2014 in the Bloomberg American Health Initiative case study. We found this interesting since South Korea is the smallest country of the top 10 emitters (the country’s land mass is approximately one quarter that of California), but it is known to have quite a dense population (a population more than doubled as the country industrialized during the latter half of the 20th century). We were curious to dig deeper into the relationship between CO2 emissions and other environmental factors with this project.
 
 **2) What are some facts about CO2 emissions for that country?**
-	South Korea’s CO₂ emissions have risen dramatically over the past 50 years, climbing from around 62 million metric tons in 1970. Then it peaked at about 671 million metric tons in 2018 before declining to roughly 574 million in 2023 (The Global Economy, 2025a). This shift is accompanied by the country’s rapid industrialization and economic growth, as well as changes in its energy sources. Coal accounted for over 80% of emissions in the 1960s, but by 2016 its share had dropped to about 50% (Index Mundi, 2025). In 2022, South Korea was responsible for about 1.65% of global fossil CO₂ emissions and ranked among the world’s top ten emitters (Worldometer, 2025), with per capita emissions of 11.09 metric tons, more than double the global average of 4.76 (The Global Economy, 2025b). South Korea has also been a pioneer in climate policy, launching the first nationwide emissions trading system in East Asia in the early 2010s (Wikipedia, 2025a). The COVID-19 pandemic triggered a 6.4% drop in emissions in 2020 due to reduced electricity generation, lower coal use, and decreased transportation demand (Wikipedia, 2025b). While emissions have fallen from their peak, South Korea still maintains one of the highest per capita carbon footprints despite their small land mass and smaller population size.
-Sources:
-“Climate Change in South Korea.” Wikipedia, 8 Aug. 2025. Wikipedia, https://en.wikipedia.org/w/index.php?title=Climate_change_in_South_Korea&oldid=1304907243
-“Emissions Trading Scheme in South Korea.” Wikipedia, 5 May 2025. Wikipedia, https://en.wikipedia.org/w/index.php?title=Emissions_Trading_Scheme_in_South_Korea&oldid=1288863909.
-“South Korea Carbon Dioxide (CO2) Emissions per Capita - Data, Chart.” TheGlobalEconomy.Com, https://www.theglobaleconomy.com/South-Korea/Carbon_dioxide_emissions_per_capita/. Accessed 10 Aug. 2025.
-“South Korea CO2 Emissions.” Worldometer, https://www.worldometers.info/co2-emissions/south-korea-co2-emissions/. Accessed 10 Aug. 2025.
+	South Korea’s CO₂ emissions have risen dramatically over the past 50 years, climbing from around 62 million metric tons in 1970. Then it peaked at about 671 million metric tons in 2018 before declining to roughly 574 million in 2023. This shift is accompanied by the country’s rapid industrialization and economic growth, as well as changes in its energy sources. Coal accounted for over 80% of emissions in the 1960s, but by 2016 its share had dropped to about 50%. In 2022, South Korea was responsible for about 1.65% of global fossil CO₂ emissions and ranked among the world’s top ten emitters, with per capita emissions of 11.09 metric tons, more than double the global average of 4.76. South Korea has also been a pioneer in climate policy, launching the first nationwide emissions trading system in East Asia in the early 2010s. While emissions have fallen from their peak, South Korea still maintains one of the highest per capita carbon footprints despite their small land mass and smaller population size, which we observed in this project.
 
-“South Korea Economic Indicators.” TheGlobalEconomy.Com, https://www.theglobaleconomy.com/south-korea/. Accessed 10 Aug. 2025.
+**Sources:**
+
+“Climate Change in South Korea.” Wikipedia, 8 Aug. 2025. Wikipedia https://en.wikipedia.org/w/index.php?title=Climate_change_in_South_Korea&oldid=1304907243
+
+
+“Emissions Trading Scheme in South Korea.” Wikipedia, 5 May 2025. Wikipedia https://en.wikipedia.org/w/index.php?title=Emissions_Trading_Scheme_in_South_Korea&oldid=1288863909.
+
+“South Korea Carbon Dioxide (CO2) Emissions per Capita - Data, Chart.” TheGlobalEconomy.Com https://www.theglobaleconomy.com/South-Korea/Carbon_dioxide_emissions_per_capita/.Accessed 10 Aug. 2025.
+
+“South Korea CO2 Emissions.” Worldometer https://www.worldometers.info/co2-emissions/south-korea-co2-emissions/. Accessed 10 Aug. 2025.
+
+“South Korea Economic Indicators.” TheGlobalEconomy.Com https://www.theglobaleconomy.com/south-korea/. Accessed 10 Aug. 2025.
+
+“Korea Emissions Trading System (K-ETS).” ICAP https://icapcarbonaction.com/en/ets/korea-emissions-trading-system-k-ets. Accessed 16 Aug. 2025.
+
+Friedrich, Johannes, et al. “Interactive Chart Shows Changes in World's Top 10 Emitters.” World Resources Institute, 2 Mar. 2023. WRI https://www.wri.org/insights/interactive-chart-shows-changes-worlds-top-10-emitters. Accessed 16 Aug. 2025.
+
+Friedrich, J. and Vigna, L. “Charts That Explain Per-Capita Greenhouse Gas Emissions.” World Resources Institute, 8 May 2023. WRI https://www.wri.org/insights/charts-explain-per-capita-greenhouse-gas-emissions. Accessed 16 Aug. 2025.
+
+Crawford, Mark. “South Korea’s Unstoppable Taste for Haste.” BBC, 8 July 2018. BBC https://www.bbc.com/travel/article/20180708-south-koreas-unstoppable-taste-for-haste. Accessed 16 Aug. 2025.
 
 # Main Research Questions
-1. How have global CO2 emission rates changed over time? In particular for South Korea (SK), and how does SK compare to other countries?
+**1. How have global CO2 emission rates changed over time? In particular for South Korea (SK), and how does SK compare to other countries?**
 
-South Korea’s CO₂ emissions are substantial and shocking for a country of its size. On a per capita basis, South Koreans emit about 11.09 metric tons of CO₂ annually, more than double the global average of 4.76 metric tons (The Global Economy, 2025b). Despite some improvements in carbon intensity, with CO₂ emissions per dollar of GDP decreasing from 0.47 kg to 0.22 kg, South Korea still remains slightly above the global average (The Global Economy, 2025c). The country’s heavy reliance on coal power contributes significantly to its emissions, with coal-related emissions per capita among the highest in the G20, at over three tons per person (Ember Climate, 2024). Globally, South Korea ranks among the top ten CO₂ emitters, alongside countries like Germany and Japan (Reuters, 2024). While recent years have seen a modest decline in emissions, the country remains a major player in the global carbon footprint.
+Our charts depict South Korea as the 8th largest per capita emitter in 2014, and emissions have been steadily climbing to this level since the country began reporting in the 1940s. Despite efforts to reduce climate impact, South Korea was the third largest emitter in terms of emissions per capita (12.6 metric tons per person) in 2019, though it was the 12th largest emitter in terms of total metric tons. The country’s heavy reliance on coal power contributes significantly to its emissions, with coal-related emissions per capita among the highest in the G20, at over three tons per person.
 
 
-2. Are CO2 emissions in SK, global temperatures, and natural disaster rates in the US associated?
+**2. Are CO2 emissions in SK, global temperatures, and natural disaster rates in the US associated?**
 
-There is strong evidence linking South Korea’s rising CO₂ emissions with increased temperatures and the severity of natural disasters. For example, in March 2025, the country experienced its largest wildfire on record, which scientists attribute to climate change doubling the likelihood of such events and increasing their intensity by about 15% (Reuters, 2025a). Record-high temperatures, roughly 2°C above historical averages, combined with dry conditions, contributed to the wildfire’s severity (The Guardian, 2025). Additionally, South Korea’s recent floods, including the heavy monsoon rains of 2023—the most intense in 115 years—have been linked to climate change, which is causing more extreme and concentrated rainfall events (Wikipedia, 2025a). Average temperatures have also steadily increased, with 2023 and 2024 setting new records, reaching nearly 2°C above long-term averages (Wikipedia, 2025b). These patterns illustrate how human-driven CO₂ emissions are contributing to a warmer climate, which in turn fuels more frequent and severe natural disasters in South Korea.
+We observed a weakly positive correlation between CO2 emissions and temperature in South Korea, however we surprisingly observed a weakly negative correlation between temperature and the number of annual natural disasters. This second result is inconsistent with evidence from other sources that suggest that rising temperatures increase the number of natural disasters that occur. For example, in March 2025, the country experienced its largest wildfire on record, which scientists attribute to climate change doubling the likelihood of such events and increasing their intensity by about 15%. Record-high temperatures, roughly 2°C above historical averages, combined with dry conditions, contributed to the wildfire’s severity. Additionally, South Korea’s recent floods, including the heavy monsoon rains of 2023—the most intense in 115 years—have been linked to climate change, which is causing more extreme and concentrated rainfall events. Average temperatures have also steadily increased, with 2023 and 2024 setting new records, reaching nearly 2°C above long-term averages. More research will need to be done to understand the reasons behind this unexpected result.
 
-References:
 
-Ember Climate. (2024). Australia and South Korea remain the top two per capita coal power polluters. https://ember-climate.org/press-releases/australia-and-south-korea-remain-the-top-two-per-capita-coal-power-polluters
+**Sources:**
 
-Reuters. (2024). Top 10 country emitters discharged record amount CO2. https://www.reuters.com/markets/commodities/top-10-country-emitters-discharged-record-amount-co2-2023-2024-06-21
+Ember Climate. (2023). "Australia and South Korea remain the top two per capita coal power polluters." https://ember-climate.org/press-releases/australia-and-south-korea-remain-the-top-two-per-capita-coal-power-polluters
 
-Reuters. (2025a). South Korea’s deadly fires made twice likely by climate change, researchers say. https://www.reuters.com/sustainability/cop/south-koreas-deadly-fires-made-twice-likely-by-climate-change-researchers-say-2025-04-30
+Maguire, Gavin. (2024). "Top 10 country emitters discharged record amount CO2." https://www.reuters.com/markets/commodities/top-10-country-emitters-discharged-record-amount-co2-2023-2024-06-21
 
-The Guardian. (2025). South Korea fires death toll rises: worst in history. https://www.theguardian.com/world/2025/mar/27/south-korea-fires-death-toll-rises-worst-in-history
+Stanway, David. (2025). "South Korea’s deadly fires made twice likely by climate change, researchers say." https://www.reuters.com/sustainability/cop/south-koreas-deadly-fires-made-twice-likely-by-climate-change-researchers-say-2025-04-30
 
-The Global Economy. (2025a). Carbon dioxide emissions – South Korea. https://www.theglobaleconomy.com/south-korea/Carbon_dioxide_emissions
+McCurry, Justin. (2025). "South Korea fires death toll rises: worst in history." https://www.theguardian.com/world/2025/mar/27/south-korea-fires-death-toll-rises-worst-in-history
 
-The Global Economy. (2025b). Carbon dioxide emissions per capita – South Korea. https://www.theglobaleconomy.com/South-Korea/Carbon_dioxide_emissions_per_capita
+The Global Economy. (2025). "South Korea: Carbon dioxide (CO2) emissions." https://www.theglobaleconomy.com/south-korea/Carbon_dioxide_emissions
 
-The Global Economy. (2025c). Carbon intensity – South Korea. https://www.theglobaleconomy.com/South-Korea/carbon_intensity
+The Global Economy. (2025). "South Korea: Carbon dioxide (CO2) emissions per capita." https://www.theglobaleconomy.com/South-Korea/Carbon_dioxide_emissions_per_capita
 
-Wikipedia. (2025a). 2023 South Korea floods. https://en.wikipedia.org/wiki/2023_South_Korea_floods
+The Global Economy. (2025). "South Korea: Carbon intensity." https://www.theglobaleconomy.com/South-Korea/carbon_intensity
 
-Wikipedia. (2025b). Geography of South Korea. https://en.wikipedia.org/wiki/Geography_of_South_Korea
+Wikipedia. (2025). "2023 South Korea floods." https://en.wikipedia.org/wiki/2023_South_Korea_floods
 
-# What are the data?
+# Context
+
+## What are the data?
 
 **This case study uses five datasets showing:**
 1. Yearly CO2 emissions by country (1751-2014):
@@ -74,7 +88,7 @@ Wikipedia. (2025b). Geography of South Korea. https://en.wikipedia.org/wiki/Geog
 3. Energy use per person in terms of kg of oil equivalents per capita by country (1990-2023):
    
     https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/raw/energy_use_per_person.xlsx
-4. South Korea Disaster Data:
+4. South Korea Disaster Data (1977-2025):
     
     https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/raw/disasters.csv
 
@@ -82,7 +96,7 @@ Wikipedia. (2025b). Geography of South Korea. https://en.wikipedia.org/wiki/Geog
     
     https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/raw/temperature.csv
 
-# What does it measure?
+## What does it measure?
 
 **1. Yearly CO2 emissions by country (1751-2014):**
 The year-over-year percentage change in gross domestic product per person for each country. Units: percent (%) change from the previous year.
@@ -93,13 +107,13 @@ The year-over-year percentage change in gross domestic product per person for ea
 **3. Energy use per person in terms of kg of oil equivalents per capita by country (1990-2023):**
 The average annual energy consumption per person, expressed in kilograms of oil equivalent (kgOE). This is a standardized unit to compare different energy sources.
 
-**4. South Korea disaster data**
+**4. South Korea disaster data (1977-2025)**
 Number and type of natural disasters in South Korea by year (e.g., floods, typhoons, droughts). Variables may include year, type of disaster, number of events, damage cost, and casualties.
 
 **5. South Korea Temperature Data (1901-2022):**
 Average yearly temperature in South Korea over time. Units: degrees Celsius (°C).
 
-# What does a given value for the variable of interest mean?
+## What does a given value for the variables of interest mean?
 **1. Yearly CO2 emissions by country (1751-2014):**
 If South Korea’s value in 2010 is 573,000, that means it emitted 573 million tonnes of CO₂ that year. Higher values indicate greater emissions, often linked to industrial activity and energy use.
 
@@ -107,14 +121,24 @@ If South Korea’s value in 2010 is 573,000, that means it emitted 573 million t
  A value of 3.5 for 2005 means GDP per person grew 3.5% compared to 2004. Negative values mean an economic contraction per person (e.g., during recessions).
 
 **3. Energy use per person in terms of kg of oil equivalents per capita by country (1990-2023):**
-A value of 4,500 in 2015 means that, on average, each person used energy equivalent to 4,500 kg of oil that year. Higher values generally reflect higher industrialization or consumption
+A value of 4,500 in 2015 means that, on average, each person used energy equivalent to 4,500 kg of oil that year. Higher values generally reflect higher industrialization or consumption.
 
-**4. South Korea Disaster Data:**
-If in 2007 the flood count is 3, it means three flood events were recorded in South Korea that year. Damage cost variables (if present) indicate the economic loss in specified currency units
+**4. South Korea Disaster Data (1977-2025):**
+If in 2007 the flood count is 3, it means three flood events were recorded in South Korea that year. Damage cost variables (if present) indicate the economic loss in specified currency units.
+
 
 **5. South Korea Temperature Data (1901-2022):**
 A temperature of 13.2°C in 2010 means the average temperature across all months of 2010 was 13.2°C. Rising averages over decades can indicate warming trends.
 
+# Limitations
+**What can you say using this data?**
+We can get a sense of how South Korea compares to other countries in terms of CO2 emissions, average temperature, incidence of natural disasters, and GDP. For example, we can see whether South Korea’s incidence of natural disasters in 2014 is higher or lower than that of Germany. That is, we can find patterns.  
+
+**What can you not say using this data?**
+The data allow us to see relationships and correlations, but we can’t necessarily make causal inferences from them. More advanced analysis to account for confounding variables and selection bias are necessary to ensure that the effect is really caused by our variable of interest. We can’t do randomized controlled trials with real-world data that have already been recorded, like CO2 emissions and temperature, and even if we could, the world is incredibly complex with many, many confounding variables.
+
+# Data Import
+Below, we'll read in the data with the appropriate function (depending upon whether they're in Excel or CSV format), assign them a dataframe name, and print out a few of the rows to see what the dataframes look like.
 """
 
 #Read in the data
