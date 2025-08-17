@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 import streamlit as st
 """# World and South Korea Environmental Dashboard
-## Amanda Yun and Chloe Choi
+Amanda Yun and Chloe Choi
 """
 
 
