@@ -74,6 +74,7 @@ The Global Economy. (2025). "South Korea: Carbon intensity." https://www.theglob
 Wikipedia. (2025). "2023 South Korea floods." https://en.wikipedia.org/wiki/2023_South_Korea_floods
 
 #Context
+
 ##What are the data?
 
 **This case study uses five datasets showing:**
