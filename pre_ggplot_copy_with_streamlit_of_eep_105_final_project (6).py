@@ -738,7 +738,7 @@ fig, ax = plt.subplots(figsize=(12, 8))
 
 ax.scatter(df_temp_plot["Value"],df_nd_plot["Value"], color='black', zorder=1)
 
-ax.set_title('South Korea Temperature and Natural Disasters', fontsize=20, y = 0.5)
+ax.set_title('South Korea Temperature and Natural Disasters', fontsize=20, y = 1.05)
 ax.set_ylabel('Total Number of Natural Disasters (Count)', fontsize=12)
 ax.set_xlabel('Temperature (Celsius)', fontsize=12)
 
