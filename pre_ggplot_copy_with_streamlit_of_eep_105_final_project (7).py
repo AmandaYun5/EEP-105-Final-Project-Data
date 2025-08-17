@@ -113,7 +113,7 @@ Number and type of natural disasters in South Korea by year (e.g., floods, typho
 **5. South Korea Temperature Data (1901-2022):**
 Average yearly temperature in South Korea over time. Units: degrees Celsius (°C).
 
-## What does a given value for the variables ofinterest mean?
+## What does a given value for the variables of interest mean?
 **1. Yearly CO2 emissions by country (1751-2014):**
 If South Korea’s value in 2010 is 573,000, that means it emitted 573 million tonnes of CO₂ that year. Higher values indicate greater emissions, often linked to industrial activity and energy use.
 
