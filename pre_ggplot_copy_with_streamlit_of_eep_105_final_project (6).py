@@ -677,6 +677,15 @@ coeff = stats.pearsonr(x,y)
 print("Correlation coefficient: ", coeff.statistic)
 # original ver
 
+
+x=list(df_sk_co2_temp_wide_std["Emissions"])
+y=list(df_sk_co2_temp_wide_std["Temperature"])
+coeff = stats.pearsonr(x,y)
+
+st.write(f"**Correlation Coefficient:** {coeff:.2f}")
+# streamlit ver
+
+
 #scaled sk emissions and temp plot
 
 fig, ax = plt.subplots(figsize=(8, 6))
