@@ -566,7 +566,7 @@ regions = ['Rest of the World', 'South Korea']
 fig, axes = plt.subplots(nrows=len(indicators), ncols=len(regions), figsize=(14, 10), sharex=True)
 
 # Add a title to the entire figure
-fig.suptitle("Distribution of Indicators by Year and Value", fontsize=16, y=0.95)
+fig.suptitle("Distribution of Indicators by Year and Value", fontsize=20, y=0.95)
 
 # --- 3. Loop Through and Plot Data on Each Axes ---
 for i, indicator in enumerate(indicators):
