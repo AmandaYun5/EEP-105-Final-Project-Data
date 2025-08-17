@@ -73,9 +73,9 @@ The Global Economy. (2025). "South Korea: Carbon intensity." https://www.theglob
 
 Wikipedia. (2025). "2023 South Korea floods." https://en.wikipedia.org/wiki/2023_South_Korea_floods
 
-#Context
+# Context
 
-##What are the data?
+## What are the data?
 
 **This case study uses five datasets showing:**
 1. Yearly CO2 emissions by country (1751-2014):
@@ -96,7 +96,7 @@ Wikipedia. (2025). "2023 South Korea floods." https://en.wikipedia.org/wiki/2023
     
     https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/raw/temperature.csv
 
-##What does it measure?
+## What does it measure?
 
 **1. Yearly CO2 emissions by country (1751-2014):**
 The year-over-year percentage change in gross domestic product per person for each country. Units: percent (%) change from the previous year.
@@ -113,7 +113,7 @@ Number and type of natural disasters in South Korea by year (e.g., floods, typho
 **5. South Korea Temperature Data (1901-2022):**
 Average yearly temperature in South Korea over time. Units: degrees Celsius (°C).
 
-##What does a given value for the variables ofinterest mean?
+## What does a given value for the variables ofinterest mean?
 **1. Yearly CO2 emissions by country (1751-2014):**
 If South Korea’s value in 2010 is 573,000, that means it emitted 573 million tonnes of CO₂ that year. Higher values indicate greater emissions, often linked to industrial activity and energy use.
 
@@ -130,7 +130,7 @@ If in 2007 the flood count is 3, it means three flood events were recorded in So
 **5. South Korea Temperature Data (1901-2022):**
 A temperature of 13.2°C in 2010 means the average temperature across all months of 2010 was 13.2°C. Rising averages over decades can indicate warming trends.
 
-#Limitations
+# Limitations
 **What can you say using this data?**
 We can get a sense of how South Korea compares to other countries in terms of CO2 emissions, average temperature, incidence of natural disasters, and GDP. For example, we can see whether South Korea’s incidence of natural disasters in 2014 is higher or lower than that of Germany. That is, we can find patterns.  
 
@@ -141,7 +141,7 @@ The data allow us to see relationships and correlations, but we can’t necessar
 Below, we'll read in the data with the appropriate function (depending upon whether they're in Excel or CSV format), assign them a dataframe name, and print out a few of the rows to see what the dataframes look like.
 """
 
-#Read in the data
+# Read in the data
 
 
 df_co2 = pd.read_csv("https://raw.githubusercontent.com/AmandaYun5/EEP-105-Final-Project-Data/refs/heads/main/yearly_co2_emissions_1000_tonnes.csv")
