@@ -137,8 +137,6 @@ We can get a sense of how South Korea compares to other countries in terms of CO
 **What can you not say using this data?**
 The data allow us to see relationships and correlations, but we can’t necessarily make causal inferences from them. More advanced analysis to account for confounding variables and selection bias are necessary to ensure that the effect is really caused by our variable of interest. We can’t do randomized controlled trials with real-world data that have already been recorded, like CO2 emissions and temperature, and even if we could, the world is incredibly complex with many, many confounding variables.
 
-# Data Import
-Below, we'll read in the data with the appropriate function (depending upon whether they're in Excel or CSV format), assign them a dataframe name, and print out a few of the rows to see what the dataframes look like.
 """
 
 #Read in the data
